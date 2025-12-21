@@ -1,11 +1,12 @@
 ﻿using HR.LeaveManagement.Domain;
 using HR.LeaveManagement.Domain.Common;
+using HR.LeaveManagement.Persistence.Configurations;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HR.LeaveManagement.Persistence.DatabaseConnection
+namespace HR.LeaveManagement.Persistence.DatabaseContext
 {
     public class HrDatabaseContext : DbContext
     {
@@ -20,15 +21,16 @@ namespace HR.LeaveManagement.Persistence.DatabaseConnection
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(HrDatabaseContext).Assembly);
-            modelBuilder.Entity<LeaveType>().HasData(
-                new LeaveType
-                {
-                    Id = 1,
-                    Name = "Vacation",
-                    DefaultDays = 10,
-                    DateCreated = DateTime.Now,
-                    DateModified = DateTime.Now
-                });
+            modelBuilder.ApplyConfiguration(new LeaveTypeConfiguration());
+            //modelBuilder.Entity<LeaveType>().HasData(
+            //    new LeaveType
+            //    {
+            //        Id = 1,
+            //        Name = "Vacation",
+            //        DefaultDays = 10,
+            //        DateCreated = DateTime.Now,
+            //        DateModified = DateTime.Now
+            //    });
             
             base.OnModelCreating(modelBuilder);
         }
