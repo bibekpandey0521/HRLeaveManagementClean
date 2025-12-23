@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
-using HRLeaveManagementApplication.Contracts.Persistence;
+using HR.LeaveManagement.Application.Contracts.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HRLeaveManagementApplication.Features.LeaveType.Queries.GetLeaveTypeDetails
+namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetLeaveTypeDetails
 {
     public class GetLeaveTypeDetailsQueryHandler : IRequestHandler<GetLeaveTypesDetailsQuery, LeaveTypeDetailsDto>
     {
