@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
+using HRLeaveManagementApplication.Features.LeaveType.Queries.GetAllLeaveTypes;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -10,12 +12,18 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CommandLeav
 {
     public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, int>
     {
-        public readonly IMapper _mapper;
-        public readonly ILeaveTypeRepository _leaveTypeRepository;
-        public CreateLeaveTypeCommandHandler(IMapper mapper, ILeaveTypeRepository leaveTypeRepository)
+        private readonly IMapper _mapper;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly IAppLogger<GetLeaveTypesQueryHandler> _logger;
+
+        public CreateLeaveTypeCommandHandler(IMapper mapper,
+            ILeaveTypeRepository leaveTypeRepository,
+            IAppLogger<GetLeaveTypesQueryHandler> logger
+            )
         {
-            _mapper = mapper;
-            _leaveTypeRepository = leaveTypeRepository;
+            this._mapper = mapper;
+            this._leaveTypeRepository = leaveTypeRepository;
+            this._logger = logger;
         }
         public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
@@ -23,7 +31,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CommandLeav
             var validator = new CreateLeaveTypeCommandValidator(_leaveTypeRepository);
             var validationResult = await validator.ValidateAsync(request);
 
-            if(!validationResult.IsValid)
+            if (!validationResult.IsValid)
             {
                 throw new BadRequestExeption("Invalid LeaveType", validationResult);
             }
@@ -34,7 +42,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CommandLeav
             await _leaveTypeRepository.CreateAsync(leaveTypeToCreate);
 
             //return record id
-
+            _logger.LogInformation("Leave types were retrieved successfully");
             return leaveTypeToCreate.Id;
         }
     }
