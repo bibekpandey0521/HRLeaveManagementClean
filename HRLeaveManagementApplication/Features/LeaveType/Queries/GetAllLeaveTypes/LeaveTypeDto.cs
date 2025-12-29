@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HRLeaveManagementApplication.Features.LeaveType.Queries.GetAllLeaveTypes
+namespace HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes
 {
     public class LeaveTypeDto
     {

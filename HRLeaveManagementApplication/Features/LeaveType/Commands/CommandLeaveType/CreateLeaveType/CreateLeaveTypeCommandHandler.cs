@@ -2,7 +2,7 @@
 using HR.LeaveManagement.Application.Contracts.Logging;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.Exceptions;
-using HRLeaveManagementApplication.Features.LeaveType.Queries.GetAllLeaveTypes;
+using HR.LeaveManagement.Application.Features.LeaveType.Queries.GetAllLeaveTypes;
 using MediatR;
 using System;
 using System.Collections.Generic;
