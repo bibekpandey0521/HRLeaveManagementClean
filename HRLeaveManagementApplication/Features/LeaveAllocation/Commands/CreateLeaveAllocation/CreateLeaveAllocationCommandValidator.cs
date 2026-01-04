@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation
 {
-    public class CreateLeaveAllocationCommandValidator : AbstractValidator<CreateAllocationCommand>
+    public class CreateLeaveAllocationCommandValidator : AbstractValidator<CreateLeaveAllocationCommand>
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         public CreateLeaveAllocationCommandValidator(ILeaveTypeRepository leaveTypeRepository)

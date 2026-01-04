@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation
 {
-    public class CreateAllocationCommand : IRequest<Unit>
+    public class CreateLeaveAllocationCommand : IRequest<Unit>
     {
         public int LeaveTypeId { get; set; }
     }

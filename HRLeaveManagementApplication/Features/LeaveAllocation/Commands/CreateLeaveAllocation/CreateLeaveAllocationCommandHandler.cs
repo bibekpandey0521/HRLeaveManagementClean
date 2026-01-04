@@ -8,7 +8,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.CreateLeaveAllocation
 {
-    public class CreateLeaveAllocationCommandHandler : IRequestHandler<CreateAllocationCommand, Unit>
+    public class CreateLeaveAllocationCommandHandler : IRequestHandler<CreateLeaveAllocationCommand, Unit>
     {
         private readonly IMapper _mapper;
         private readonly ILeaveTypeRepository _leaveTypeRepository;
@@ -21,7 +21,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.Creat
             this._leaveAllocationRepository = leaveAllocationRepository;
             this._leaveTypeRepository = leaveTypeRepository;
         }
-        public async Task<Unit> Handle(CreateAllocationCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateLeaveAllocationCommandValidator(_leaveTypeRepository);
             var validationResult = await validator.ValidateAsync(request);
