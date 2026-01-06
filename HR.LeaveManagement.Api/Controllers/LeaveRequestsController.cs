@@ -1,5 +1,5 @@
-﻿using HR.LeaveManagement.Application.Features.LeaveRequest.CancelLeaveRequest;
-using HR.LeaveManagement.Application.Features.LeaveRequest.ChangeLeaveRequestApproval;
+﻿using HR.LeaveManagement.Application.Features.LeaveRequest.Command.CancelLeaveRequest;
+using HR.LeaveManagement.Application.Features.LeaveRequest.Command.ChangeLeaveRequestApproval;
 using HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLeaveRequest;
 using HR.LeaveManagement.Application.Features.LeaveRequest.Command.DeleteLeaveRequest;
 using HR.LeaveManagement.Application.Features.LeaveRequest.Command.UpdateLeaveRequest;

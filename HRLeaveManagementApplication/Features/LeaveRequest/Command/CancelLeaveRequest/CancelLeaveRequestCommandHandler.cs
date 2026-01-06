@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace HR.LeaveManagement.Application.Features.LeaveRequest.CancelLeaveRequest
+namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.CancelLeaveRequest
 {
     public class CancelLeaveRequestCommandHandler : IRequestHandler<CancelLeaveRequestCommand, Unit>
     {
