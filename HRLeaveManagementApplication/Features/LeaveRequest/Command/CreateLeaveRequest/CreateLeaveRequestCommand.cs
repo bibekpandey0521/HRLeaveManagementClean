@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLeaveRequest
 {
-    public class CreateLeaveRequestCommand : BaseLeaveRequest,IRequest<int>
+    public class CreateLeaveRequestCommand : BaseLeaveRequest,IRequest<Unit>
     {
         public string RequsetComments { get; set; } = string.Empty;
     }
