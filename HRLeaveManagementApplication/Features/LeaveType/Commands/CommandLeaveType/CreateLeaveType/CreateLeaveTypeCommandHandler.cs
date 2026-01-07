@@ -33,7 +33,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CommandLeav
 
             if (!validationResult.IsValid)
             {
-                throw new BadRequestExeption("Invalid LeaveType", validationResult);
+                throw new BadRequestException("Invalid LeaveType", validationResult);
             }
             // convert to domain entity object
             var leaveTypeToCreate = _mapper.Map<Domain.LeaveType>(request);

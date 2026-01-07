@@ -29,7 +29,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.Uploa
             
             var validationResult =await  validator.ValidateAsync(request);
             if (validationResult.Errors.Any())
-                throw new BadRequestExeption("Invalid Leave Allocation", validationResult);
+                throw new BadRequestException("Invalid Leave Allocation", validationResult);
             
             var leaveAllocation = await _leaveAllocationRepository.GetByIdAsync(request.Id);
             if(leaveAllocation is null)

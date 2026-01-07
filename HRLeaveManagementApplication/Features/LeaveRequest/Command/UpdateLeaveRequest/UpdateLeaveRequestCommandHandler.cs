@@ -43,7 +43,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.UpdateLea
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Any())
-                throw new BadRequestExeption("Invalid Leave Request",validationResult);
+                throw new BadRequestException("Invalid Leave Request",validationResult);
 
             _mapper.Map(request,leaveRequest);
 

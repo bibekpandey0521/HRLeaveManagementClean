@@ -34,7 +34,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveType.Commands.CommandLeav
             {
                 _logger.LogWarning("Validation errors in update leave type command for id {0} - {1}",nameof(LeaveType)
                     ,request.Id);
-                throw new BadRequestExeption("Invalid leave Type",validationResult);
+                throw new BadRequestException("Invalid leave Type",validationResult);
             }
 
             //convert to domain entity object

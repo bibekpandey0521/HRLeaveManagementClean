@@ -33,7 +33,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequest.Command.CreateLea
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Any())
-                throw new BadRequestExeption("Invalid leave Request",validationResult);
+                throw new BadRequestException("Invalid leave Request",validationResult);
 
             var leaveRequest = _mapper.Map<Domain.LeaveRequest>(request);
             await _leaveRequestRepository.CreateAsync(leaveRequest);

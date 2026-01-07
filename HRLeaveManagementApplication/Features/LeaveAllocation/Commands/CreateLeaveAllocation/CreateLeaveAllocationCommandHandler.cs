@@ -27,7 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocation.Commands.Creat
             var validationResult = await validator.ValidateAsync(request);
 
             if (validationResult.Errors.Any())
-                throw new BadRequestExeption("Invalid Leave Allocation Request",validationResult);
+                throw new BadRequestException("Invalid Leave Allocation Request",validationResult);
 
             // Get Leave type for allocation
             var leaveType = await  _leaveTypeRepository.GetByIdAsync(request.LeaveTypeId);
