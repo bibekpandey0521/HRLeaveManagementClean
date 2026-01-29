@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HR.LeaveManagement.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateLeaveTypeSeed2025 : Migration
+    public partial class InitialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

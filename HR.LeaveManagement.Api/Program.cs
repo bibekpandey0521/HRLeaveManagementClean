@@ -3,6 +3,11 @@ using HRLeaveManagementApplication;
 
 using HR.LeaveManagement.Infrastructure;
 using HR.LeaveManagement.Api.Middleware;
+using HR.LeaveManagement.Identity;
+using HR.LeaveManagement.Identity.DbContext;
+using HR.LeaveManagement.Identity.Models;
+using Microsoft.AspNetCore.Identity;
+using HR.LeaveManagement.Identity.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
 builder.Services.AddControllers();
 
@@ -27,6 +33,21 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var identityDbContext = scope.ServiceProvider.GetRequiredService<HrLeaveManagementIdentityDbContext>();
+    if (!identityDbContext.Users.Any())
+    {
+
+        var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+        var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+        await IdentityDbInitializer.SeedIdentityAsync(userManager, roleManager);
+
+    }
+}
+
 app.UseMiddleware<ExceptionMiddleware>();
 
 // Configure the HTTP request pipeline.
@@ -41,6 +62,8 @@ app.UseHttpsRedirection();
 
 app.UseCors("all");
 
+
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
