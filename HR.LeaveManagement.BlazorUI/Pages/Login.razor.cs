@@ -12,6 +12,8 @@ namespace HR.LeaveManagement.BlazorUI.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
         public string Message { get; set; }
+
+        [Inject]
         private IAuthenticationService AuthenticationService { get; set; }
 
         public Login()

@@ -18,7 +18,7 @@ namespace HR.LeaveManagement.BlazorUI.Providers
         {
             var user = new ClaimsPrincipal(new ClaimsIdentity());
             var isTokenPresent = await localStorage.ContainKeyAsync("token");
-            if (isTokenPresent)
+            if (isTokenPresent == false)
             {
                 return new AuthenticationState(user);
             }

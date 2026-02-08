@@ -1,4 +1,4 @@
-﻿@page "/leaveTypes/"
+﻿@page "/leavetypes/"
 
 <h3>Leave Types</h3>
 
@@ -32,7 +32,7 @@ else
                     Default Days
                 </th>
                 <th>
-                   Action
+                    Action
                 </th>
             </tr>
         </thead>
@@ -44,13 +44,17 @@ else
                     <td>@leaveType.Name</td>
                     <td>@leaveType.DefaultDays</td>
                     <td>
-                        <button @onclick=@(() => AllocateLeaveType(leaveType.Id))
-                                class="btn btn-dark">
-                            Allocate Leave
-                        </button>
-                        <button @onclick="@(() => EditLeaveType(leaveType.Id))" class="btn btn-warning">Edit</button>
-                        <button @onclick="@(() => DeleteLeaveType(leaveType.Id))" class="btn btn-danger">Delete</button>
-                        <button @onclick="@(() => DetailsLeaveType(leaveType.Id))" class="btn btn-info">Details</button>
+                        <AuthorizeView Roles="Administrator">
+
+
+                            <button @onclick=@(() => AllocateLeaveType(leaveType.Id))
+                                    class="btn btn-dark">
+                                Allocate Leave
+                            </button>
+                            <button @onclick="@(() => EditLeaveType(leaveType.Id))" class="btn btn-warning">Edit</button>
+                            <button @onclick="@(() => DeleteLeaveType(leaveType.Id))" class="btn btn-danger">Delete</button>
+                            <button @onclick="@(() => DetailsLeaveType(leaveType.Id))" class="btn btn-info">Details</button>
+                        </AuthorizeView>
                     </td>
                 </tr>
             }

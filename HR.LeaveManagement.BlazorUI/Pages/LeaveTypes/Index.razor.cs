@@ -8,6 +8,7 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
     {
         [Inject]
         NavigationManager NavigationManager { get; set; }
+      
         [Inject]
         public ILeaveTypeService LeaveTypeService { get; set; }
 
