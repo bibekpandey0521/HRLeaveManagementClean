@@ -1,6 +1,7 @@
 using HR.LeaveManagement.BlazorUI.Contracts;
 using HR.LeaveManagement.BlazorUI.Models.LeaveTypes;
 using Microsoft.AspNetCore.Components;
+using System.ComponentModel.DataAnnotations;
 
 namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
 {
@@ -11,6 +12,8 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
       
         [Inject]
         public ILeaveTypeService LeaveTypeService { get; set; }
+        [Inject]
+        public ILeaveAllocationService LeaveAllocationService { get; set; } 
 
         public string Message { get; private set; }
 
@@ -21,9 +24,14 @@ namespace HR.LeaveManagement.BlazorUI.Pages.LeaveTypes
         }
         protected void AllocateLeaveType(int id)
         {
-            // Leave Allocation Service here
+            // Use Leave Allocation Service here
+            LeaveAllocationService.CreateLeaveAllocations(id);
         }
 
+        //protected async Task AllocateLeaveType(int id) 
+        //{
+        //    var response = await LeaveAllocationService.CreateLeaveAllocations(id);
+        //}
         protected void EditLeaveType(int id)
         {
             NavigationManager.NavigateTo($"/leaveTypes/edit/{id}");

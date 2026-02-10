@@ -28,6 +28,12 @@ namespace HR.LeaveManagement.BlazorUI.Services
                 throw;
             }
         }
+
+        public Task<Response<Guid>> CancelRequest(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<Response<Guid>> CreateLeaveRequest(LeaveRequestVM leaveRequest)
         {
             try
@@ -81,6 +87,16 @@ namespace HR.LeaveManagement.BlazorUI.Services
             };
 
             return model;
+        }
+
+        public Task<EmployeeRequestViewVM> GetUserLeaveRequests()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Response<Guid>> ILeaveRequestService.ApproveLeaveRequest(int id, bool approved)
+        {
+            throw new NotImplementedException();
         }
     }
 }
